@@ -6,18 +6,20 @@ Timer library for go. Will call function after timeout.
 package main
 
 import (
-    "fmt"
-    "github.com/dutchcoders/gotimer"
-    "time"
+	"fmt"
+	"github.com/dutchcoders/gotimer"
+	"time"
 )
 
 func main() {
+	var i int = 0
 
-    go timer.Interval(func(args ...interface{}) error {
-        fmt.Println("test")
-        return nil
-    }, 1000*time.Millisecond)
+	go timer.Interval(func() error {
+		fmt.Printf("test %d\n", i)
+		i++
+		return nil
+	}, 1000*time.Millisecond)
 
-    time.Sleep(100000 * time.Millisecond)
+	time.Sleep(100000 * time.Millisecond)
 }
 ```

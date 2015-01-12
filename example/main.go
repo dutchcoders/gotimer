@@ -7,9 +7,11 @@ import (
 )
 
 func main() {
+	var i int = 0
 
-	go timer.Interval(func(args ...interface{}) error {
-		fmt.Println("test")
+	go timer.Interval(func() error {
+		fmt.Printf("test %d\n", i)
+		i++
 		return nil
 	}, 1000*time.Millisecond)
 
